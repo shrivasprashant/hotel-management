@@ -83,10 +83,11 @@ const RoomManagement = () => {
             <thead className="text-center text-white bg-zinc-700">
               <tr>
                 <th className="py-2 px-4 border w-24">Room Number</th>
-                <th className="py-2 px-4 border w-32">Type</th>
-                <th className="py-2 px-4 border w-24">Status</th>
-                <th className="py-2 px-4 border w-24">Beds</th>
+                <th className="py-2 px-4 border w-28">Type</th>
+                <th className="py-2 px-4 border w-16">Status</th>
+                <th className="py-2 px-4 border w-16">Beds</th>
                 <th className="py-2 px-4 border w-16">AC</th>
+                <th className="py-2 px-2 border w-16">Amount</th>
                 <th className="py-2 px-4 border w-48">Actions</th>
               </tr>
             </thead>
@@ -101,6 +102,7 @@ const RoomManagement = () => {
                   <td className="py-2 px-4 border h-12">{room.status}</td>
                   <td className="py-2 px-4 border h-12">{room.beds}</td>
                   <td className="py-2 px-4 border h-12">{room.ac}</td>
+                  <td className="py-2 px-4 border h-12">{room.amount}</td>
                   <td className="py-2 px-4 border h-12 space-x-2">
                     <button
                       onClick={() => handleEditRoom(room.roomNumber, room)}

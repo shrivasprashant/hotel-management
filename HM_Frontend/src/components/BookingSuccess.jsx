@@ -59,6 +59,9 @@ const BookingSuccess = () => {
         <p className="text-gray-700 mb-2">
           <strong>Category:</strong> {bookingDetails.ac}
         </p>
+        <p className="text-gray-700 mb-2">
+          <strong>Amount:</strong> {bookingDetails.amount}
+        </p>
       </div>
     </div>
   );

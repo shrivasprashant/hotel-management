@@ -5,27 +5,36 @@ const BookingManagement = () => {
   const [bookings, setBookings] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const API_BASE_URL = "http://localhost:5000/api";
+  const BOOKINGS_API_URL = `${API_BASE_URL}/bookings`;
+
   useEffect(() => {
-    // Fetch bookings from API
     fetchBookings();
   }, []);
 
   const fetchBookings = async () => {
-    // Replace with your API call
-    const response = await fetch("/api/bookings");
-    const data = await response.json();
-    setBookings(data);
+    try {
+      const response = await fetch(BOOKINGS_API_URL);
+      if (!response.ok) {
+        throw new Error("Failed to fetch bookings");
+      }
+      const data = await response.json();
+      setBookings(data);
+    } catch (error) {
+      console.error("Error fetching bookings:", error);
+      // Handle error
+    }
   };
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  const filteredBookings = bookings.filter(
-    (booking) =>
-      booking.guestName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      booking.roomType.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredBookings = bookings.filter((booking) => {
+    const guestName = booking.guestName ? booking.guestName.toLowerCase() : '';
+    const roomType = booking.roomType ? booking.roomType.toLowerCase() : '';
+    return guestName.includes(searchTerm.toLowerCase()) || roomType.includes(searchTerm.toLowerCase());
+  });
 
   return (
     <Admin>

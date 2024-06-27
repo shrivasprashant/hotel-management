@@ -37,6 +37,10 @@ export const bookroom = async (req, res) => {
     const availableCount = availableRooms.length - overlappingBookings.length;
 
     if (availableCount > 0) {
+      // Fetch amount from the available room
+      const selectedRoom = availableRooms[0];
+      const amount = selectedRoom.amount; // Assuming amount is stored in the Room model
+
       const newBooking = new Booking({
         checkInDate,
         checkOutDate,
@@ -44,12 +48,13 @@ export const bookroom = async (req, res) => {
         roomType,
         beds,
         ac,
-        amount: 100,
-        room: availableRooms[0]._id,
+        amount,
+        room: selectedRoom._id,
       });
 
+      // Update the room status to 'booked'
       await Room.updateOne(
-        { _id: availableRooms[0]._id },
+        { _id: selectedRoom._id },
         { status: 'booked' }
       );
 

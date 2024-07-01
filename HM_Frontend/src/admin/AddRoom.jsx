@@ -119,7 +119,7 @@ const AddRoom = () => {
           >
             <option value="">AC</option>
             <option value="AC">AC</option>
-            <option value="None AC">None Ac</option>
+            <option value="None Ac">None Ac</option>
           </select>
         </div>
         <button

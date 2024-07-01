@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Admin from "./Admin";
+import { Link } from "react-router-dom";
 
 const RoomManagement = () => {
   const [rooms, setRooms] = useState([]);
@@ -15,28 +16,6 @@ const RoomManagement = () => {
       setRooms(data);
     } catch (error) {
       console.error("Error fetching rooms:", error);
-    }
-  };
-
-
-  const handleEditRoom = async (roomNumber, updatedRoom) => {
-    try {
-      const response = await fetch(
-        `http://127.0.0.1:5000/api/register/rooms/${roomNumber}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updatedRoom),
-        }
-      );
-      const data = await response.json();
-      setRooms((prevRooms) =>
-        prevRooms.map((room) => (room.roomNumber === roomNumber ? data : room))
-      );
-    } catch (error) {
-      console.error("Error editing room:", error);
     }
   };
 
@@ -77,7 +56,6 @@ const RoomManagement = () => {
   return (
     <Admin>
       <div className="p-4 space-y-4">
-
         <div className="bg-zinc-600 p-4 rounded-lg shadow overflow-x-auto">
           <table className="min-w-full table-auto">
             <thead className="text-center text-white bg-zinc-700">
@@ -104,12 +82,12 @@ const RoomManagement = () => {
                   <td className="py-2 px-4 border h-12">{room.ac}</td>
                   <td className="py-2 px-4 border h-12">{room.amount}</td>
                   <td className="py-2 px-4 border h-12 space-x-2">
-                    <button
-                      onClick={() => handleEditRoom(room.roomNumber, room)}
+                    <Link
+                      to={`/editroom/${room.roomNumber}`}
                       className="bg-yellow-500 text-white px-2 py-1 my-1 rounded-md"
                     >
                       Edit
-                    </button>
+                    </Link>
                     <button
                       onClick={() => handleDeleteRoom(room.roomNumber)}
                       className="bg-red-500 text-white px-2 py-1 my-1 rounded-md"

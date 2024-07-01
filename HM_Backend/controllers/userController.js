@@ -1,41 +1,42 @@
 import User from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+
+
 export const register = async (req, res) => {
     try {
-        const { Name , password, email, mobileNumber } = req.body;
-        if (!Name || !password || !mobileNumber || !email) {
-            return res.status(400).json({ message: "All fields are required" });
-        }
-        // if (password !== confirmPassword) {
-        //     return res.status(400).json({ message: "Password do not match" });
-        // }
-
-        const user = await User.findOne({ email });
-        if (user) {
-            return res.status(400).json({ message: "User already exit try different" });
-        }
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        // profilePhoto
-        const maleProfilePhoto = `https://avatar.iran.liara.run/public/boy?email=${email}`;
-
-        await User.create({
-            Name,
-            email,
-            password: hashedPassword,
-            mobileNumber,
-            profilePhoto: maleProfilePhoto,
-            
-        });
-        return res.status(201).json({
-            message: "Account created successfully.",
-            success: true
-        })
+      const { Name, password, email, mobileNumber } = req.body;
+      if (!Name || !password || !mobileNumber || !email) {
+        return res.status(400).json({ message: "All fields are required" });
+      }
+  
+      const existingUser = await User.findOne({ email });
+      if (existingUser) {
+        return res.status(400).json({ message: "User already exists. Try a different email." });
+      }
+  
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const profilePhoto = `https://avatar.iran.liara.run/public/boy?email=${email}`;
+  
+      const newUser = new User({
+        Name,
+        email,
+        password: hashedPassword,
+        mobileNumber,
+        profilePhoto,
+      });
+  
+      await newUser.save();
+  
+      return res.status(201).json({
+        message: "Account created successfully.",
+        success: true,
+      });
     } catch (error) {
-        console.log(error);
+      console.error(error);
+      return res.status(500).json({ message: "Server error", error: error.message });
     }
-};
+  };
 
 export const login = async (req, res) => {
     try {
@@ -92,3 +93,15 @@ export const logout = (req, res) => {
         console.log(error);
     }
 }
+
+
+export const getAllUsers = async (req, res) => {
+    try {
+      const users = await User.find().select('-password'); // Excluding the password field
+      res.status(200).json(users);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Server error", error: error.message });
+    }
+  };
+  

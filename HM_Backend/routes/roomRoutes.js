@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 
-import { Checkavailability, deleteRoom, fetchAllRooms, fetchMetrics, registerroom, updateRoomDetails, updateRoomStatus } from '../controllers/roomController.js';
+import { Checkavailability, deleteRoom, fetchAllRooms, fetchMetrics, findRoomByRoomNumber, registerroom, updateRoomDetails, updateRoomStatus } from '../controllers/roomController.js';
 
 // Create a new room
 router.post('/rooms', registerroom);
@@ -23,5 +23,8 @@ router.put('/rooms/:roomNumber', updateRoomDetails);
 
 // Delete a room
 router.delete('/rooms/:roomNumber', deleteRoom);
+
+// Get a room  by ID
+router.get('/rooms/:roomNumber', findRoomByRoomNumber);;
 
 export default router;

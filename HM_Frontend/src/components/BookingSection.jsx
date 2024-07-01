@@ -29,6 +29,7 @@ const BookingSection = () => {
           ac,
         }),
       });
+      console.log(await response.json());
       if (response.ok) {
         const data = await response.json();
         toast.success("Booking Successful");
@@ -97,7 +98,7 @@ const BookingSection = () => {
               className="w-full p-2 border rounded-md"
             >
               <option value="AC">AC</option>
-              <option value="None AC">None AC</option>
+              <option value="None Ac">None AC</option>
             </select>
           </div>
           <div>

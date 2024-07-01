@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 
 const App = () => {
   const location = useLocation();
-  const adminPaths = ["/admin","/admin/dashboard","/admin/bookings", "/admin/rooms", "/admin/manageroom"];
+  const adminPaths = ["/admin","/admin/dashboard","/admin/bookings", "/admin/rooms", "/admin/alluser", "/admin/manageroom","/editroom/101"];
 
   const isAdminRoute = adminPaths.includes(location.pathname);
   return (

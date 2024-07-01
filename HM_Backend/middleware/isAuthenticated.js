@@ -17,7 +17,30 @@ const isAuthenticated = async (req, res, next) => {
 };
 export default isAuthenticated;
 
-const req = {
-    id: "",
-}
-req.id = "sdlbgnjdfn"
+
+
+// import User from '../models/User.js';
+
+// const isAuthenticated = async (req, res, next) => {
+//   const token = req.header('Authorization')?.replace('Bearer ', '') || req.cookies.token;
+
+//   if (!token) {
+//     return res.status(401).json({ message: 'Authentication failed. No token provided.' });
+//   }
+
+//   try {
+//     const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+//     const user = await User.findById(decoded.userId);
+
+//     if (!user) {
+//       return res.status(401).json({ message: 'Authentication failed. User not found.' });
+//     }
+
+//     req.user = user;
+//     next();
+//   } catch (error) {
+//     res.status(401).json({ message: 'Invalid token' });
+//   }
+// };
+
+// export default isAuthenticated;

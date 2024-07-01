@@ -2,7 +2,7 @@ import Booking from '../models/Booking.js';
 import Room from '../models/Room.js';
 
 export const bookroom = async (req, res) => {
-  const { checkInDate, checkOutDate, guests, roomType, beds, ac } = req.body;
+  const { GuestName, checkInDate, checkOutDate, guests, roomType, beds, ac } = req.body;
 
   try {
     const availableRooms = await Room.find({
@@ -34,14 +34,17 @@ export const bookroom = async (req, res) => {
       ],
     });
 
+    console.log('Available Rooms:', availableRooms);
+    console.log('Overlapping Bookings:', overlappingBookings);
+
     const availableCount = availableRooms.length - overlappingBookings.length;
 
     if (availableCount > 0) {
-      // Fetch amount from the available room
       const selectedRoom = availableRooms[0];
-      const amount = selectedRoom.amount; // Assuming amount is stored in the Room model
+      const amount = selectedRoom.amount;
 
       const newBooking = new Booking({
+        GuestName,
         checkInDate,
         checkOutDate,
         guests,
@@ -52,7 +55,6 @@ export const bookroom = async (req, res) => {
         room: selectedRoom._id,
       });
 
-      // Update the room status to 'booked'
       await Room.updateOne(
         { _id: selectedRoom._id },
         { status: 'booked' }
@@ -64,13 +66,14 @@ export const bookroom = async (req, res) => {
       res.status(400).json({ message: 'Room not available for the selected dates' });
     }
   } catch (error) {
+    console.error('Booking error:', error);
     res.status(500).json({ message: 'Server error, please try again later', error: error.message });
   }
 };
 
 export const allbooking = async (req, res) => {
   try {
-    const bookings = await Booking.find();
+    const bookings = await Booking.find().populate('GuestName').populate('room');
     res.json(bookings);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -79,7 +82,7 @@ export const allbooking = async (req, res) => {
 
 export const singlebookingbyId = async (req, res) => {
   try {
-    const booking = await Booking.findById(req.params.id);
+    const booking = await Booking.findById(req.params.id).populate('GuestName').populate('room');
     if (!booking) return res.status(404).json({ message: 'Booking not found' });
     res.json(booking);
   } catch (error) {

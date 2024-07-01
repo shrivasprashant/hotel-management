@@ -86,12 +86,12 @@ export const fetchMetrics = async (req, res) => {
 
 export const updateRoomDetails = async (req, res) => {
   const { roomNumber } = req.params;
-  const { type, status, beds, ac } = req.body;
+  const { type, status, beds, ac, amount } = req.body;
 
   try {
     const updatedRoom = await RoomModel.findOneAndUpdate(
       { roomNumber },
-      { type, status, beds, ac },
+      { type, status, beds, ac, amount },
       { new: true } // This option returns the updated document
     );
 
@@ -118,5 +118,15 @@ export const deleteRoom = async (req, res) => {
     res.status(200).send({ message: "Room deleted successfully" });
   } catch (err) {
     res.status(400).send(err);
+  }
+};
+
+export const findRoomByRoomNumber = async (req, res) => {
+  try {
+    const room = await RoomModel.findOne({ roomNumber: req.params.roomNumber });
+    if (!room) return res.status(404).json({ message: 'Room not found' });
+    res.json(room);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };

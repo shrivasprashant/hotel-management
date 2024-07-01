@@ -27,7 +27,7 @@ const Sidebar = () => {
           <li className="p-4 hover:bg-gray-700"><Link to="/admin/bookings">Manage Bookings</Link></li>
           <li className="p-4 hover:bg-gray-700"><Link to="/admin/manageroom">Manage Rooms</Link></li>
           <li className="p-4 hover:bg-gray-700"><Link to="/admin/rooms">Add Rooms</Link></li>
-          <li className="p-4 hover:bg-gray-700"><Link to="/users">Users</Link></li>
+          <li className="p-4 hover:bg-gray-700"><Link to="/admin/alluser">Users</Link></li>
           <li className="p-4 hover:bg-gray-700"><Link to="/reservations">Reservations</Link></li>
         </ul>
       </nav>

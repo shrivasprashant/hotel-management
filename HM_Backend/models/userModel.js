@@ -13,13 +13,21 @@ const userModel = new mongoose.Schema(
     email: {
       type: String,
       default: "",
-      unique:true
+      unique: true
     },
     mobileNumber: {
-        type: String,
-        default: "",
-        unique:true
-      },
+      type: String,
+      default: "",
+      unique: true
+    },
+    profilePhoto: {
+      type: String,
+      default: "",
+    },
+    booking: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Booking',
+    },
   },
   { timestamps: true }
 );

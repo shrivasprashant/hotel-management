@@ -136,7 +136,7 @@ const AddRoom = () => {
             {rooms.map((room) => (
               <div
                 key={room.roomNumber}
-                className="p-4 border rounded-md shadow"
+                className="p-4 border bg-slate-200 rounded-md shadow"
               >
                 <p>
                   <strong>Room Number:</strong> {room.roomNumber}

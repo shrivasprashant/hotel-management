@@ -18,7 +18,7 @@ const AboutSection = () => {
     <section id="about" className="bg-gray-100 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-center mb-10">About Us</h2>
-        <p className="text-center text-lg mb-10">
+        <p className="text-center text-lg font-semibold mx-10 mb-10">
           Welcome to [Hotel Name], where luxury meets comfort. Founded in [Year], we have a rich history of providing exceptional service and creating memorable experiences for our guests. Our mission is to make you feel at home while enjoying the finest amenities and services.
         </p>
         <Slider {...settings} className="mx-auto max-w-4xl">

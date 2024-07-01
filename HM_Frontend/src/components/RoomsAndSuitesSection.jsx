@@ -39,7 +39,7 @@ const RoomsAndSuitesSection = () => {
               <div className="p-4">
                 <h3 className="text-xl font-bold mb-2">{room.name}</h3>
                 <p className="text-gray-700 mb-4">{room.description}</p>
-                <a href="#" className="text-indigo-600 hover:text-indigo-800 font-semibold">View Details</a>
+                <a href="#" className="text-indigo-600 hover:text-white bg-white hover:bg-indigo-600 border border-blue-500 px-2 py-2 rounded-lg font-semibold">View Details</a>
               </div>
             </div>
           ))}

@@ -4,16 +4,31 @@ import { Link } from "react-router-dom";
 
 const RoomManagement = () => {
   const [rooms, setRooms] = useState([]);
+  const [filteredRooms, setFilteredRooms] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetchRooms();
   }, []);
+
+  useEffect(() => {
+    const results = rooms.filter(room =>
+      room.roomNumber.toString().includes(searchTerm) ||
+      room.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      room.status.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      room.beds.toString().includes(searchTerm) ||
+      room.ac.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      room.amount.toString().includes(searchTerm)
+    );
+    setFilteredRooms(results);
+  }, [searchTerm, rooms]);
 
   const fetchRooms = async () => {
     try {
       const response = await fetch("http://127.0.0.1:5000/api/register/rooms");
       const data = await response.json();
       setRooms(data);
+      setFilteredRooms(data);
     } catch (error) {
       console.error("Error fetching rooms:", error);
     }
@@ -56,7 +71,17 @@ const RoomManagement = () => {
   return (
     <Admin>
       <div className="p-4 space-y-4">
-        <div className="bg-zinc-600 p-4 rounded-lg shadow overflow-x-auto">
+        <div className="bg-zinc-500 p-4 rounded-lg shadow overflow-x-auto">
+          <input
+            type="text"
+            placeholder="Search by room number, type, status, beds, AC, amount"
+            className="w-9/12 mb-4 p-2 border border-gray-300 rounded"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button className="bg-green-500 hover:bg-green-700 ml-2 text-white font-bold py-2 px-4 rounded">Search </button>
+
+
           <table className="min-w-full table-auto">
             <thead className="text-center text-white bg-zinc-700">
               <tr>
@@ -70,7 +95,7 @@ const RoomManagement = () => {
               </tr>
             </thead>
             <tbody>
-              {rooms.map((room) => (
+              {filteredRooms.map((room) => (
                 <tr
                   key={room.roomNumber}
                   className="text-center text-white hover:bg-zinc-500"

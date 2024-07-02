@@ -38,7 +38,7 @@ const BookingManagement = () => {
 
   return (
     <Admin>
-      <div className="p-6 bg-red-300 rounded-lg shadow-md">
+      <div className="p-6 bg-zinc-900 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold mb-4">Booking Management</h2>
         <div className="mb-4">
           <input
@@ -51,7 +51,7 @@ const BookingManagement = () => {
         </div>
         <div className="grid grid-cols-1 gap-4">
           {filteredBookings.map((booking) => (
-            <div key={booking._id} className="p-4 border rounded-md shadow">
+            <div key={booking._id} className="p-4 border rounded-md bg-slate-300 shadow">
               <p>
                 <strong>Guest Name:</strong> {booking.guestName}
               </p>

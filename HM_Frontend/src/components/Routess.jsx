@@ -12,6 +12,7 @@ import Admin from "../admin/Admin";
 import AddRoom from "../admin/AddRoom";
 import EditRoom from "../admin/EditRoom";
 import UserDetails from "../admin/UserDetails";
+import SuperDashboard from "../superAdmin/SuperDashboard";
 
 function Routess() {
   return (
@@ -29,6 +30,7 @@ function Routess() {
         <Route path="/admin/rooms" element={<AddRoom />} />
         <Route path="/admin/alluser" element={<UserDetails/>} />
         <Route path="/editroom/:roomNumber" element={<EditRoom />} />
+        <Route path="/superadmin" element={<SuperDashboard />} />
       </Routes>
     </div>
   );

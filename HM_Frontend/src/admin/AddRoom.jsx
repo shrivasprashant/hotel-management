@@ -9,7 +9,7 @@ const AddRoom = () => {
     status: "",
     beds: "",
     ac: "",
-    amount:"",
+    amount: "",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -22,6 +22,9 @@ const AddRoom = () => {
     setLoading(true);
     try {
       const response = await fetch("http://127.0.0.1:5000/api/register/rooms");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
       const data = await response.json();
       setRooms(data);
     } catch (error) {
@@ -38,13 +41,16 @@ const AddRoom = () => {
 
   const addRoom = async () => {
     try {
-      await fetch("http://127.0.0.1:5000/api/register/rooms", {
+      const response = await fetch("http://127.0.0.1:5000/api/register/rooms", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(newRoom),
       });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
       fetchRooms();
       setNewRoom({
         roomNumber: "",
@@ -52,7 +58,7 @@ const AddRoom = () => {
         status: "",
         beds: "",
         ac: "",
-        amount:"",
+        amount: "",
       });
     } catch (error) {
       setError("Error adding room");
@@ -119,7 +125,7 @@ const AddRoom = () => {
           >
             <option value="">AC</option>
             <option value="AC">AC</option>
-            <option value="None Ac">None Ac</option>
+            <option value="None AC">None AC</option>
           </select>
         </div>
         <button
@@ -154,7 +160,7 @@ const AddRoom = () => {
                   <strong>AC:</strong> {room.ac}
                 </p>
                 <p>
-                  <strong>AMOUNT:</strong> {room.amount}
+                  <strong>Amount:</strong> {room.amount}
                 </p>
               </div>
             ))}

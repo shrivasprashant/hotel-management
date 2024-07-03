@@ -12,8 +12,22 @@ import Admin from "../admin/Admin";
 import AddRoom from "../admin/AddRoom";
 import EditRoom from "../admin/EditRoom";
 import UserDetails from "../admin/UserDetails";
-import SuperDashboard from "../superAdmin/SuperDashboard";
-
+import SuperAdmin from "../superAdmin/SuperAdmin";
+import AddAminities from "../superAdmin/AddAminities"
+import AddAuditorium from "../superAdmin/AddAuditorium"
+import AddCabs from "../superAdmin/AddCabs";
+import AddFood from "../superAdmin/AddFood";
+import AddGarden from "../superAdmin/AddGarden";
+import AddHall from "../superAdmin/AddHall";
+import AddHotel from "../superAdmin/AddHotels";
+import AllBooking   from "../superAdmin/AllBooking";
+import Category from "../superAdmin/Category";
+import CreateRoom from "../superAdmin/CreateRoom";
+import Floor from "../superAdmin/Floor";
+import invoices from "../superAdmin/Invoice";
+import Rating from "../superAdmin/Rating&Review"; 
+import SubCategory from "../superAdmin/SubCategory";
+import Subscription from "../superAdmin/Subscription";
 
 
 function Routess() {
@@ -32,7 +46,23 @@ function Routess() {
         <Route path="/admin/rooms" element={<AddRoom />} />
         <Route path="/admin/alluser" element={<UserDetails/>} />
         <Route path="/editroom/:roomNumber" element={<EditRoom />} />
-        <Route path="/superadmin" element={<SuperDashboard />} />
+        <Route path="/SuperAdmin" element={<SuperAdmin />} />
+        <Route path="/SuperAdmin/aminities" element={<AddAminities/>} />
+        <Route path="/SuperAdmin/auditorium" element={<AddAuditorium/>} />
+        <Route path="/SuperAdmin/cabs" element={<AddCabs/>} />
+        <Route path="/SuperAdmin/food" element={<AddFood/>} />
+        <Route path="/SuperAdmin/garden" element={<AddGarden/>} />
+        <Route path="/SuperAdmin/hall" element={<AddHall/>} />
+        <Route path="/SuperAdmin/hotel" element={<AddHotel/>} />
+        <Route path="/SuperAdmin/booking" element={<AllBooking/>} />
+        <Route path="/SuperAdmin/category" element={<Category/>} />
+        <Route path="/SuperAdmin/subcategory" element={<SubCategory/>} />
+        <Route path="/SuperAdmin/room" element={<CreateRoom/>} />
+        <Route path="/SuperAdmin/floor" element={<Floor/>} />
+        <Route path="/SuperAdmin/invoices" element={<invoices/>} />
+        <Route path="/SuperAdmin/rating" element={<Rating/>} />
+        <Route path="/SuperAdmin/subscription" element={<Subscription/>} />
+         
       </Routes>
     </div>
   );

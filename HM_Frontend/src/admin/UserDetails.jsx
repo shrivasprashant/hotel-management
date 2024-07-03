@@ -41,12 +41,12 @@ const UserDetails = () => {
 
   return (
     <Admin>
-      <div className="container mx-auto p-4">
+      <div className="container bg-sky-100 mx-auto p-4">
         <h2 className="text-3xl font-bold mb-6 text-center text-black">User Details</h2>
         <input
           type="text"
           placeholder="Search by name, email or mobile number"
-          className="w-9/12  mb-6 mx-auto p-2 border border-gray-300 rounded"
+          className="w-9/12  mb-6 mx-auto p-2 border border-gray-300 rounded-md"
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
         />
@@ -54,7 +54,7 @@ const UserDetails = () => {
 
 
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
+          <table className="min-w-full rounded-md divide-y divide-gray-200">
             <thead className="bg-gray-300">
               <tr>
                 <th className="w-1/4 py-3 px-6 text-left text-xm font-medium text-gray-900 uppercase tracking-wider">Name</th>

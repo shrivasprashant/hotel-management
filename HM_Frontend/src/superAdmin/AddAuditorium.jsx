@@ -1,7 +1,11 @@
 import React from 'react';
 
+import SuperAdmin from '../superAdmin/SuperAdmin';
+
+
 const AddAuditorium = () => {
   return (
+    <SuperAdmin>
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Add Auditorium</h1>
       <form>
@@ -12,6 +16,7 @@ const AddAuditorium = () => {
         <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">Add</button>
       </form>
     </div>
+    </SuperAdmin>
   );
 };
 

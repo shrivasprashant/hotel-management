@@ -1,7 +1,9 @@
 import React from 'react';
+import SuperAdmin from '../superAdmin/SuperAdmin';
 
 const AllBookings = () => {
   return (
+    <SuperAdmin>
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">All Bookings</h1>
       <table className="min-w-full bg-white border">
@@ -19,6 +21,7 @@ const AllBookings = () => {
         </tbody>
       </table>
     </div>
+    </SuperAdmin>
   );
 };
 

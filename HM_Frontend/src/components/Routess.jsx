@@ -28,6 +28,7 @@ import invoices from "../superAdmin/Invoice";
 import Rating from "../superAdmin/Rating&Review"; 
 import SubCategory from "../superAdmin/SubCategory";
 import Subscription from "../superAdmin/Subscription";
+import SuperDashboard from "../superAdmin/superDashboard";
 
 
 function Routess() {
@@ -62,6 +63,7 @@ function Routess() {
         <Route path="/SuperAdmin/invoices" element={<invoices/>} />
         <Route path="/SuperAdmin/rating" element={<Rating/>} />
         <Route path="/SuperAdmin/subscription" element={<Subscription/>} />
+        <Route path="/SuperAdmin/superdashboard" element={<SuperDashboard/>} />
          
       </Routes>
     </div>

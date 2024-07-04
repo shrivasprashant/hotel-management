@@ -33,7 +33,8 @@ const App = () => {
     "/superadmin/floor", 
     "/superadmin/invoices", 
     "/superadmin/rating", 
-    "/superadmin/subscription"
+    "/superadmin/subscription",
+    "/superadmin/superdashboard"
   ];
 
   const isRestrictedRoute = adminPaths.includes(location.pathname.toLowerCase()) || superAdminPaths.includes(location.pathname.toLowerCase());

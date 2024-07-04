@@ -27,6 +27,13 @@ const CreateRoom = () => {
             <option>Triple Bed</option>
           </select>
         </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">AC status </label>
+          <select className="mt-1 p-2 w-full border rounded-md">
+            <option>AC Room</option>
+            <option>Non AC Room</option>
+          </select>
+        </div>
         <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">Create</button>
       </form>
     </div>

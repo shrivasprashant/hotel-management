@@ -62,30 +62,33 @@ const AddAuditorium = () => {
               />
             </div>
 
-            {/* Capacity */}
-            <div className="mb-4">
-              <label htmlFor="capacity" className="block text-sm font-medium text-gray-700">Capacity</label>
-              <input
-                id="capacity"
-                type="number"
-                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-blue-500"
-                value={capacity}
-                onChange={(e) => setCapacity(e.target.value)}
-                required
-              />
-            </div>
+            {/* Capacity and Location */}
+            <div className="flex mb-4 space-x-4">
+              {/* Capacity */}
+              <div className="flex-1">
+                <label htmlFor="capacity" className="block text-sm font-medium text-gray-700">Capacity</label>
+                <input
+                  id="capacity"
+                  type="number"
+                  className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-blue-500"
+                  value={capacity}
+                  onChange={(e) => setCapacity(e.target.value)}
+                  required
+                />
+              </div>
 
-            {/* Location */}
-            <div className="mb-4">
-              <label htmlFor="location" className="block text-sm font-medium text-gray-700">Location</label>
-              <input
-                id="location"
-                type="text"
-                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-blue-500"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-                required
-              />
+              {/* Location */}
+              <div className="flex-1">
+                <label htmlFor="location" className="block text-sm font-medium text-gray-700">Location</label>
+                <input
+                  id="location"
+                  type="text"
+                  className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-blue-500"
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                  required
+                />
+              </div>
             </div>
 
             {/* Facilities */}
